@@ -61,6 +61,19 @@ class CarouselOptions {
   /// Defaults to false.
   final bool? enlargeCenterPage;
 
+  /// Determines if other pages should be rotated then the current page,
+  /// creating a feeling of chain in the carousel.
+  ///
+  /// Defaults to false.
+  final double otherPagesRotation;
+
+
+  /// Curve used for enlarge and rotate animation
+  /// creating a feeling of chain in the carousel.
+  ///
+  /// Defaults to Curves.easeOut.
+  final Curve enlargeCurve;
+
   /// The axis along which the page view scrolls.
   ///
   /// Defaults to [Axis.horizontal].
@@ -138,5 +151,7 @@ class CarouselOptions {
     this.pageViewKey,
     this.enlargeStrategy: CenterPageEnlargeStrategy.scale,
     this.disableCenter: false,
+    this.otherPagesRotation: 0,
+    this.enlargeCurve: Curves.easeOut,
   });
 }

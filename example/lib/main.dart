@@ -52,6 +52,7 @@ class CarouselDemo extends StatelessWidget {
 class DemoItem extends StatelessWidget {
   final String title;
   final String route;
+
   DemoItem(this.title, this.route);
 
   @override
@@ -110,7 +111,11 @@ class BasicDemo extends StatelessWidget {
       appBar: AppBar(title: Text('Basic demo')),
       body: Container(
           child: CarouselSlider(
-        options: CarouselOptions(),
+        options: CarouselOptions(
+          otherPagesRotation: 45,
+          enlargeCenterPage: true,
+          disableCenter: true,
+        ),
         items: list
             .map((item) => Container(
                   child: Center(child: Text(item.toString())),
@@ -154,9 +159,7 @@ class ImageSliderDemo extends StatelessWidget {
         options: CarouselOptions(),
         items: imgList
             .map((item) => Container(
-                  child: Center(
-                      child:
-                          Image.network(item, fit: BoxFit.cover, width: 1000)),
+                  child: Center(child: Image.network(item, fit: BoxFit.cover, width: 1000)),
                 ))
             .toList(),
       )),
@@ -180,16 +183,12 @@ final List<Widget> imageSliders = imgList
                       child: Container(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Color.fromARGB(0, 0, 0, 0)
-                            ],
+                            colors: [Color.fromARGB(200, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                           ),
                         ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
+                        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                         child: Text(
                           'No. ${imgList.indexOf(item)} image',
                           style: TextStyle(
@@ -439,9 +438,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
                 margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: (Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black)
+                    color: (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black)
                         .withOpacity(_current == entry.key ? 0.9 : 0.4)),
               ),
             );
@@ -494,9 +491,7 @@ class _PrefetchImageDemoState extends State<PrefetchImageDemo> {
         ),
         itemBuilder: (context, index, realIdx) {
           return Container(
-            child: Center(
-                child: Image.network(images[index],
-                    fit: BoxFit.cover, width: 1000)),
+            child: Center(child: Image.network(images[index], fit: BoxFit.cover, width: 1000)),
           );
         },
       )),
