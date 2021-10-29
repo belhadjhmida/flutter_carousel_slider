@@ -294,8 +294,8 @@ class CarouselSliderState extends State<CarouselSlider> with TickerProviderState
               }
               final num distortionRatio = (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
               final num distortionRatioForRotation = (1 - (itemOffset.abs() * 0.3)).clamp(0, 1.0);
-              distortionValue = options.enlargeCurve.transform(distortionRatio as double);
-              distortionValueForRotation = options.enlargeCurve.transform(distortionRatioForRotation.abs() as double);
+              distortionValue = options.enlargeCurve.transform(distortionRatio.toDouble());
+              distortionValueForRotation = options.enlargeCurve.transform(distortionRatioForRotation.abs().toDouble());
             }
 
             final double height =
